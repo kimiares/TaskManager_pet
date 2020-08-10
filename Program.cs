@@ -16,19 +16,19 @@ namespace TaskManager_pet
             Console.WriteLine("Напоминайка бестолковая, консольная");
 
 
-
+            
             using (ApplicationContext db = new ApplicationContext())
             {
 
-                db.GetService<ILoggerFactory>().AddProvider(new TMLoggerProvider());
+                //db.GetService<ILoggerFactory>().AddProvider(new TMLoggerProvider());
 
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Выберите нужную функцию");
                 Console.ResetColor();
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine("View - просмотр списка задач" +
-                        "\nActive - список актуальных задач"+
-                        "\nNotActive - список выполненных задач" +
+                Console.WriteLine("Show all - просмотр списка задач" +
+                        "\nShow active - список актуальных задач"+
+                        "\nShow comp(leted) - список выполненных задач" +
                         "\nAdd - добавить задачу " +
                         "\ndelete - удалить задачу " +
                         "\nDrop - удалить все задачи" + 
@@ -48,10 +48,10 @@ namespace TaskManager_pet
 
                         switch (type)
                         {
-                            case "view":
-                            case "v":
+                            case "show all":
+                            case "all":
                                 Console.WriteLine("Вы выбрали просмотр списка задач");
-                                ApplicationContext.View();
+                                ApplicationContext.ShowAll();
                                 break;
 
                             case "add":
@@ -66,7 +66,9 @@ namespace TaskManager_pet
 
                             case "exit":
                             case "ex":
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
                                 Console.WriteLine("Вы выбрали выход из программы. Прощайте");
+                                Console.ResetColor();
                                 Environment.Exit(0);
                                 break;
 
@@ -98,15 +100,15 @@ namespace TaskManager_pet
                                 Console.WriteLine("Вы удаляете все задачи");
                                 ApplicationContext.Drop();
                                 break;
+                            case "show active":
                             case "active":
-                            case "ac":
-                                Console.WriteLine("Активные задачи");
-                                ApplicationContext.ViewActual();
+                                
+                                ApplicationContext.ShowActive();
                                 break;
-                            case "notactive":
-                            case "noac":
-                                Console.WriteLine("Выполненные задачи");
-                                ApplicationContext.ViewINActual();
+                            case "show comp":
+                            case "completed":
+                                
+                                ApplicationContext.ShowCompleted();
                                 break;
                             default:
                                 Console.WriteLine("Вы ввели неправильную команду");

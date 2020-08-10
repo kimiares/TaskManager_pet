@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.Extensions.Logging;
 
 namespace TaskManager_pet
 {
@@ -19,11 +21,18 @@ namespace TaskManager_pet
         {
             optionsBuilder.UseMySql("server=127.0.0.1; UserId=root; password = kimiomio89; database=taskmanager;");
         }
+
+        //public static readonly ILoggerFactory MyLoggerFactory = LoggerFactory.Create(builder =>
+        //{
+        //    builder.AddProvider(new TMLoggerProvider());  
+        //});
+
+
         public static void Drop()
         {
             using (ApplicationContext db = new ApplicationContext())
             {
-
+                db.GetService<ILoggerFactory>().AddProvider(new TMLoggerProvider());
 
                 db.Database.EnsureDeleted();
 
@@ -31,12 +40,12 @@ namespace TaskManager_pet
                 Console.WriteLine("Таблица удалена");
             }
         }
-        public static void View()
+        public static void ShowAll()
         {
             using (ApplicationContext db = new ApplicationContext())
             {
 
-
+                db.GetService<ILoggerFactory>().AddProvider(new TMLoggerProvider());
                 var tasks = db.Tasks.ToList();
                 Console.WriteLine("Список существующих задач:");
 
@@ -49,13 +58,13 @@ namespace TaskManager_pet
             }
         }
 
-        public static void ViewActual()
+        public static void ShowActive()
         {
             using (ApplicationContext db = new ApplicationContext())
             {
 
 
-                
+                db.GetService<ILoggerFactory>().AddProvider(new TMLoggerProvider());
                 var tasks = db.Tasks.Where(t => t.Status == true);
                 Console.WriteLine("Актитвные задачи:");
 
@@ -65,13 +74,13 @@ namespace TaskManager_pet
                 }
             }
         }
-        public static void ViewINActual()
+        public static void ShowCompleted()
         {
             using (ApplicationContext db = new ApplicationContext())
             {
 
 
-
+                db.GetService<ILoggerFactory>().AddProvider(new TMLoggerProvider());
                 var tasks = db.Tasks.Where(t => t.Status == false);
                 Console.WriteLine("Неактивные задачи:");
 

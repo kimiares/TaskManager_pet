@@ -15,7 +15,7 @@ namespace TaskManager_pet
         {
 
             string WritePath = @"C:\Sharp\TMpet.txt";
-            using (StreamWriter sw = new StreamWriter(WritePath, false, System.Text.Encoding.Default))
+            using (StreamWriter sw = new StreamWriter(WritePath, true, System.Text.Encoding.Default))
             {
                 sw.WriteLine(NameOfTask + " : " + Description);
             }

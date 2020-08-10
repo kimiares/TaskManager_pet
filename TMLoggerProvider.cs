@@ -15,7 +15,7 @@ namespace TaskManager_pet
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            
         }
         private class TMLogger : ILogger
         {
@@ -32,7 +32,13 @@ namespace TaskManager_pet
             public void Log<TState>(LogLevel logLevel, EventId eventId, 
                 TState state, Exception exception, Func<TState, Exception, string> formatter)
             {
-                File.AppendAllText("TMlog.txt", formatter(state, exception));
+
+                string path = @"C:\Users\Tino\source\repos\TaskManager_pet\Logs.txt";
+                //File.AppendAllText("TMlog.txt", formatter(state, exception));
+                File.AppendAllText(path, formatter(state, exception));
+
+                //C:\Users\Tino\source\repos\TaskManager_pet
+
                 //Console.WriteLine(formatter(state, exception));
             }
         }

@@ -1,0 +1,13 @@
+queryContext => new QueryingEnumerable<Task>(
+    (RelationalQueryContext)queryContext, 
+    RelationalCommandCache, 
+    null, 
+    null, 
+    Func<QueryContext, DbDataReader, ResultContext, int[], ResultCoordinator, Task>, 
+    TaskManager_pet.ApplicationContext, 
+    null
+)Creating DbCommand for 'ExecuteReader'.Created DbCommand for 'ExecuteReader' (34ms).Opening connection to database 'taskmanager' on server '127.0.0.1'.Opened connection to database 'taskmanager' on server '127.0.0.1'.Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `t`.`ID`, `t`.`Decription`, `t`.`NameOfTask`, `t`.`Status`
+FROM `Tasks` AS `t`Executed DbCommand (105ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `t`.`ID`, `t`.`Decription`, `t`.`NameOfTask`, `t`.`Status`
+FROM `Tasks` AS `t`Context 'ApplicationContext' started tracking 'Task' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.Context 'ApplicationContext' started tracking 'Task' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.Context 'ApplicationContext' started tracking 'Task' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.Context 'ApplicationContext' started tracking 'Task' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.Context 'ApplicationContext' started tracking 'Task' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.Context 'ApplicationContext' started tracking 'Task' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.A data reader was disposed.Closing connection to database 'taskmanager' on server '127.0.0.1'.Closed connection to database 'taskmanager' on server '127.0.0.1'.'ApplicationContext' disposed.
